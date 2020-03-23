@@ -8,7 +8,7 @@
       @foreach ($cuffie as $cuffia)
 
           <div class="card" >
-              <img class="card-img-top" src="" alt="">
+    
               <div class="card-body">
               <h2 class="card-title"> Marca: {{$cuffia->marca}}</h2>
               <h4> Modello:  {{$cuffia->modello}}</h3>
