@@ -14,7 +14,8 @@ class HeadphoneController extends Controller
     public function index()
     {
         $cuffie = Headphone::all();
-        dd($cuffie);
+        // dd($cuffie);
+        return view('cuffie.index', compact("cuffie"));
     }
 
     /**
