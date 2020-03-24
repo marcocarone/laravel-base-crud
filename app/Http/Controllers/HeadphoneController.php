@@ -102,13 +102,15 @@ class HeadphoneController extends Controller
      */
     public function edit(Headphone $cuffie)
     {
+      // dd($cuffie);
       if(empty($cuffie)) {
          abort('404');
      }
 
      return view('cuffie.edit', compact('cuffie'));
     }
-    }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -119,20 +121,28 @@ class HeadphoneController extends Controller
      */
     public function update(Request $request, $id)
     {
-    //   $cuffia = Headphone::find($id);
-    // if(empty($cuffia)) {
-    //     abort('404');
-    // }
-    //
-    // $data = $request->all();
-    //
-    //
-    //
-    // $updated = $cuffia->update($data);
-    // if ($updated) {
-    //     $cuffia = Headphone::find($id);
-    //     return redirect()->route('cuffie.show', compact('cuffia'));
-    // }
+      $cuffia = Headphone::find($id);
+    if(empty($cuffia)) {
+        abort('404');
+    }
+
+    $data = $request->all();
+
+    $request->validate([
+        'marca' => 'required|string|max:50',
+        'modello' => 'required|string|max:50',
+        'peso' => 'required|numeric|min:1|max:10000',
+        'caratteristiche' => 'required|string|max:255',
+        'descrizione' => 'required|string',
+        'prezzo' => 'required|numeric|min:1|max:9999.99',
+
+        ]);
+
+    $updated = $cuffia->update($data);
+    if ($updated) {
+        $cuffia = Headphone::find($id);
+        return redirect()->route('cuffie.show', compact('cuffia'));
+    }
     }
 
     /**

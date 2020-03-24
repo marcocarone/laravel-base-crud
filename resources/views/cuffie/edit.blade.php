@@ -5,7 +5,7 @@
 
 
 <form class="margin50" action="{{route('cuffie.update', $cuffie->id)}}" method="post">
-  {{-- inserisco alert con errori --}}
+
   @if ($errors->any())
   <div class="alert alert-danger">
   <ul>
