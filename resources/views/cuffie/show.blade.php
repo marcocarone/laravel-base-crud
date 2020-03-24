@@ -2,7 +2,7 @@
 
 @section('main')
 
-@dd($cuffie);
+
 
     <div class="container-xl margin50">
 

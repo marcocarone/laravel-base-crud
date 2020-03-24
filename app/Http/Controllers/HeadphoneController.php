@@ -100,9 +100,14 @@ class HeadphoneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Headphone $cuffie)
     {
-        //
+      if(empty($cuffie)) {
+         abort('404');
+     }
+
+     return view('cuffie.edit', compact('cuffie'));
+    }
     }
 
     /**
@@ -114,7 +119,20 @@ class HeadphoneController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    //   $cuffia = Headphone::find($id);
+    // if(empty($cuffia)) {
+    //     abort('404');
+    // }
+    //
+    // $data = $request->all();
+    //
+    //
+    //
+    // $updated = $cuffia->update($data);
+    // if ($updated) {
+    //     $cuffia = Headphone::find($id);
+    //     return redirect()->route('cuffie.show', compact('cuffia'));
+    // }
     }
 
     /**
