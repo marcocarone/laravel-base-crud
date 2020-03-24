@@ -37,6 +37,19 @@ class HeadphoneController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
+
+        $request->validate([
+            'marca' => 'required|string|max:50',
+            'modello' => 'required|string|max:50',
+            'peso' => 'required|numeric|min:1|max:10000',
+            'caratteristiche' => 'required|string|max:255',
+            'descrizione' => 'required|string',
+            'prezzo' => 'required|numeric|min:1|max:9999.99',
+
+            ]);
+
+
         $cuffia = new Headphone;
         $cuffia->marca = $data["marca"];
         $cuffia->modello = $data["modello"];
@@ -48,6 +61,8 @@ class HeadphoneController extends Controller
         $cuffia->save();
         if($cuffia->save()) {
           return redirect()->route("cuffie.index");
+          // $cuffia = Headphone::all()->last();
+          //   return redirect()->route('cuffie.show', compact('cuffia'));
         }
     }
 
@@ -57,9 +72,26 @@ class HeadphoneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+
+     // public function show($id)
+     // {
+     //   $cuffia = Headphone::find($id);
+     //   if(empty($cuffia)) {
+     //      abort('404');
+     //  }
+     //
+     //  return view('cuffie.show', compact('cuffia'));
+     // }
+
+
+    public function show(Headphone $cuffie)
     {
-        //
+      if(empty($cuffie)) {
+         abort('404');
+     }
+
+     return view('cuffie.show', compact('cuffie'));
     }
 
     /**
