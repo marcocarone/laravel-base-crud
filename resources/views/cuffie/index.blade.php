@@ -7,7 +7,7 @@
 <div class="container-xl margin50">
     @foreach ($cuffie as $cuffia)
 
-    <div class="card">
+    <div class="card m-2">
 
         <div class="card-body">
             <h2 class="card-title"> Marca: {{$cuffia->marca}}</h2>
