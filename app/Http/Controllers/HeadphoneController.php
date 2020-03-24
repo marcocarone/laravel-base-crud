@@ -141,7 +141,7 @@ class HeadphoneController extends Controller
     $updated = $cuffia->update($data);
     if ($updated) {
         $cuffia = Headphone::find($id);
-        return redirect()->route('cuffie.show', compact('cuffia'));
+        return redirect()->route('cuffie.show', $cuffia);
 
     }
     }
@@ -154,6 +154,8 @@ class HeadphoneController extends Controller
      */
     public function destroy($id)
     {
-        //
+      // $user->delete();
+      //
+      // return view('users.index');
     }
 }
