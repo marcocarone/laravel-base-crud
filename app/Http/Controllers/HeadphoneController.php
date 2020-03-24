@@ -142,6 +142,7 @@ class HeadphoneController extends Controller
     if ($updated) {
         $cuffia = Headphone::find($id);
         return redirect()->route('cuffie.show', compact('cuffia'));
+
     }
     }
 
