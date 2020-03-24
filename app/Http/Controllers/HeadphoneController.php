@@ -155,7 +155,6 @@ class HeadphoneController extends Controller
     public function destroy(Headphone $cuffie)
     {
       $cuffie->delete();
-
-      return view('cuffie.index');
+      return redirect()->route('cuffie.index');
     }
 }
